@@ -1,30 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
   
-  // Navigation Logic
   const navLinks = document.querySelectorAll('.nav-links li');
   const viewSections = document.querySelectorAll('.view-section');
   const pageTitle = document.getElementById('page-title');
 
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
-      // Remove active class from all links
+
       navLinks.forEach(l => l.classList.remove('active'));
-      // Add active class to clicked link
       link.classList.add('active');
 
-      // Hide all views
       viewSections.forEach(view => view.classList.remove('active'));
       
-      // Show targeted view
       const targetId = link.getAttribute('data-target');
       document.getElementById(targetId).classList.add('active');
 
-      // Change page title appropriately based on the navigation item
       pageTitle.textContent = link.querySelector('span').textContent;
     });
   });
 
-  // Chart.js - Weekly Adherence Chart (Bar)
   const adherenceCtx = document.getElementById('adherenceChart');
   if (adherenceCtx) {
     new Chart(adherenceCtx.getContext('2d'), {
@@ -68,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Chart.js - Dose Status Breakdown (Doughnut)
   const statusCtx = document.getElementById('statusPieChart');
   if (statusCtx) {
     new Chart(statusCtx.getContext('2d'), {
@@ -92,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mock Button Actions
   const addMedBtn = document.getElementById('addMedBtn');
   if (addMedBtn) {
     addMedBtn.addEventListener('click', () => {
